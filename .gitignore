@@ -2,3 +2,4 @@ node_modules
 dist
 .env
 DEPLOY.md
+DEPLOY-COOLIFY.md

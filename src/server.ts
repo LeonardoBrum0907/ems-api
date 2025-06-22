@@ -51,6 +51,6 @@ app.listen({
    port: env.PORT,
    host: '0.0.0.0'
 }).then(() => {
-   console.log(`🚀 HTTP server running on http://0.0.0.0:${env.PORT}`)
-   console.log(`📚 API Documentation available at http://0.0.0.0:${env.PORT}/docs`)
+   console.log(`🚀 HTTP server running on port:${env.PORT}`)
+   console.log(`📚 API Documentation available at port:${env.PORT}/docs`)
 })
