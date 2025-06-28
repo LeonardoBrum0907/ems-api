@@ -16,7 +16,7 @@ export async function answerUserMessage({
       tools: {
          postgres: tool({
             description: `
-              Realiza uma query no Postgres para buscar informaçõe sobre as tabelas do banco de dados.
+              Realiza uma query no Postgres para buscar informações sobre as tabelas do banco de dados.
 
               Só pode realizar operações de busca (SELECT), não é permitido a geração de qualquer operação de escrita.
 
@@ -64,7 +64,7 @@ export async function answerUserMessage({
 
         Inclua na resposta somente o que o usuário pediu, sem nenhum texto adicional.
 
-        O retorno deve ser sempre em markdown (sem incluir \`\`\`	no inicio ou no final).
+        O retorno deve ser sempre uma string formatada para whatsapp.
       `.trim(),
       maxSteps: 5
    })
