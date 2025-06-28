@@ -22,12 +22,27 @@ export async function answerUserMessage({
 
                Tables:
                """
-                  CREATE TABLE subscriptions (
-                     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-                     name text NOT NULL,
-                     email text NOT NULL UNIQUE,
-                     created_at timestamp NOT NULL DEFAULT now()
-                  )
+                  CREATE TABLE reports (
+                     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+                     date TEXT NOT NULL,
+                     line TEXT,
+                     tag TEXT,
+                     problem TEXT NOT NULL,
+                     cause TEXT,
+                     corrective_action TEXT,
+                     preventive_action TEXT,
+                     full_report TEXT,
+                     original_data JSONB NOT NULL,
+                     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+                     created_by TEXT
+                  );
+
+                  -- Índices
+                  CREATE INDEX reports_date_idx ON reports(date);
+                  CREATE INDEX reports_line_idx ON reports(line);
+                  CREATE INDEX reports_tag_idx ON reports(tag);
+                  CREATE INDEX reports_created_at_idx ON reports(created_at);
                """
                
                Todas operações devem retornar um máximo de 50 itens.
@@ -45,7 +60,7 @@ export async function answerUserMessage({
          })
       },
       system: `
-        Você é um assistente de I.A responsável por resopnder dúvidas sobre um evento de programação.
+        Você é um assistente de I.A responsável por resopnder dúvidas sobre relatórios de manutenção.
 
         Inclua na resposta somente o que o usuário pediu, sem nenhum texto adicional.
 
