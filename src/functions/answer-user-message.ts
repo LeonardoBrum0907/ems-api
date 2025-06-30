@@ -63,6 +63,8 @@ export async function answerUserMessage({
         Inclua na resposta somente o que o usuário pediu, sem nenhum texto adicional.
 
         O retorno deve ser sempre com caracteres de escape para o whatsapp.
+
+         Todas operações devem retornar um máximo de 50 itens.
       `.trim(),
       maxSteps: 5
    })
