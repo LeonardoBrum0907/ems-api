@@ -50,7 +50,7 @@ export async function answerUserMessage({
                params: z.array(z.string()).describe('Os parâmetros da query')
             }),
             execute: async ({ query, params }) => {
-               console.log(query, params)
+               console.log('query', query)
                const result = await pg.unsafe(query, params)
 
                return JSON.stringify(result)
@@ -68,5 +68,12 @@ export async function answerUserMessage({
       `.trim(),
       maxSteps: 5
    })
+
+   console.log('Token usage', {
+      inputTokens: answer.usage?.promptTokens,
+      outputTokens: answer.usage?.completionTokens,
+      totalTokens: answer.usage?.totalTokens
+   })
+
    return { response: answer.text }
 }
