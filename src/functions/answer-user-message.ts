@@ -44,8 +44,6 @@ export async function answerUserMessage({
                   CREATE INDEX reports_tag_idx ON reports(tag);
                   CREATE INDEX reports_created_at_idx ON reports(created_at);
                """
-               
-               Todas operações devem retornar um máximo de 50 itens.
             `.trim(),
             parameters: z.object({
                query: z.string().describe('A query do Postgres a ser executada'),
@@ -60,11 +58,11 @@ export async function answerUserMessage({
          })
       },
       system: `
-        Você é um assistente de I.A responsável por resopnder dúvidas sobre relatórios de manutenção.
+        Você é um assistente de I.A responsável por responder dúvidas sobre relatórios de manutenção.
 
         Inclua na resposta somente o que o usuário pediu, sem nenhum texto adicional.
 
-        O retorno deve ser sempre uma string formatada para whatsapp.
+        O retorno deve ser sempre uma string com caracteres de escape para o whatsapp.
       `.trim(),
       maxSteps: 5
    })
